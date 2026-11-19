@@ -68,29 +68,45 @@ document.documentElement.lang=l})();
   .btn-ghost:hover{border-color:var(--bone-dim);color:var(--fold)}
 
   /* scope diagram */
-  .scope{position:relative;justify-self:center;width:100%;max-width:440px}
+  .scope{position:relative;justify-self:center;width:100%;max-width:460px;margin:0}
   .scope svg{width:100%;height:auto;display:block;overflow:visible}
-  .scope-toggle{display:flex;margin:22px auto 0;width:max-content;background:var(--blood-2);
+  .scope-toggle{display:flex;margin:18px auto 0;width:max-content;max-width:100%;background:var(--blood-2);
                 border-radius:999px;padding:4px;border:1px solid var(--blood-3)}
-  .scope-toggle button{font:700 .95rem var(--body);color:var(--bone-dim);background:none;border:0;
-                       padding:10px 20px;border-radius:999px;cursor:pointer}
+  .scope-toggle button{font:700 .92rem var(--body);color:var(--bone-dim);background:none;border:0;
+                       padding:9px 16px;border-radius:999px;cursor:pointer;white-space:nowrap}
   .scope-toggle button[aria-pressed="true"]{background:var(--bone);color:var(--blood)}
   .scope-caption{text-align:center;color:var(--bone-dim);font-size:.95rem;margin:14px auto 0;
-                 max-width:36ch;min-height:3.2em}
-  .ff{transition:transform .5s cubic-bezier(.3,.7,.2,1)}
-  .scream .ff-l{transform:translateX(30px)}
-  .scream .ff-r{transform:translateX(-30px)}
-  .scream .ff-l .buzz{animation:buzz-l .09s linear infinite alternate}
-  .scream .ff-r .buzz{animation:buzz-r .09s linear infinite alternate}
-  @keyframes buzz-l{to{transform:translateX(3px)}}
-  @keyframes buzz-r{to{transform:translateX(-3px)}}
-  .glow{transition:opacity .5s}
-  .scream .glow{opacity:.85}
+                 max-width:38ch;min-height:4.8em}
+  .scope .tf,.scope .ff,.scope .ary{transition:transform .7s cubic-bezier(.3,.7,.2,1);transform-box:view-box}
+  .scope .tf-l,.scope .tf-r{transform-origin:220px 124px}
+  .scope[data-mode="clean"] .tf-l{transform:rotate(-7.6deg)}
+  .scope[data-mode="clean"] .tf-r{transform:rotate(7.6deg)}
+  .scope[data-mode="scream"] .tf-l{transform:rotate(-3.5deg)}
+  .scope[data-mode="scream"] .tf-r{transform:rotate(3.5deg)}
+  .scope[data-mode="clean"] .ary-l{transform:translateX(9px)}
+  .scope[data-mode="clean"] .ary-r{transform:translateX(-9px)}
+  .scope[data-mode="scream"] .ary-l{transform:translateX(6px)}
+  .scope[data-mode="scream"] .ary-r{transform:translateX(-6px)}
+  .scope .ff-l{transform-origin:197px 118px}
+  .scope .ff-r{transform-origin:243px 118px}
+  .scope[data-mode="scream"] .ff-l{transform:translateX(17px) rotate(-4deg)}
+  .scope[data-mode="scream"] .ff-r{transform:translateX(-17px) rotate(4deg)}
+  .scope .vib{opacity:0;transition:opacity .4s}
+  .scope[data-mode="clean"] .vib-tf,.scope[data-mode="scream"] .vib-ff{opacity:1}
+  .scope[data-mode="clean"] .vib-tf path{animation:shimmer .14s ease-in-out infinite alternate}
+  .scope[data-mode="scream"] .ff-l .buzz{animation:buzz-l .07s linear infinite alternate}
+  .scope[data-mode="scream"] .ff-r .buzz{animation:buzz-r .07s linear infinite alternate}
+  .scope[data-mode="scream"] .vib-ff path{animation:shimmer .09s linear infinite alternate}
+  @keyframes buzz-l{to{transform:translateX(2.2px)}}
+  @keyframes buzz-r{to{transform:translateX(-2.2px)}}
+  @keyframes shimmer{to{opacity:.25}}
   @media (prefers-reduced-motion:reduce){
-    .ff{transition:none}.scream .buzz{animation:none!important}
+    .scope .tf,.scope .ff,.scope .ary,.scope .vib{transition:none}
+    .scope .buzz,.scope .vib path{animation:none!important}
   }
-  .lbl{font:400 13px var(--body);fill:var(--bone-dim)}
+  .lbl{font:400 12.5px var(--body);fill:var(--bone-dim);letter-spacing:.01em}
   .lbl-strong{font:700 14px var(--body);fill:var(--bone)}
+  .lbl-minor{font:700 12.5px var(--body);fill:var(--bone-dim)}
 
   /* ---------- sections ---------- */
   section{padding:clamp(56px,8vw,104px) 0;border-top:1px solid var(--blood-3)}
@@ -220,70 +236,133 @@ document.documentElement.lang=l})();
   <div class="hero">
     <div>
       <h1><span data-l="en">Learn to scream without shredding your voice.</span><span data-l="nl">Leer screamen zonder je stem kapot te maken.</span></h1>
-      <p class="lede"><span data-l="en">One-on-one lessons in false-chord technique, made for beginners. Online, or in person in Den Haag.</span><span data-l="nl">Eén-op-één lessen in false-chord techniek, speciaal voor beginners. Online, of live in Den Haag.</span></p>
+      <p class="lede"><span data-l="en">One-on-one lessons in false-chord technique, made for beginners. Online or in person in Den Haag, in Dutch, English or German.</span><span data-l="nl">Eén-op-één lessen in false-chord techniek, speciaal voor beginners. Online of live in Den Haag, in het Nederlands, Engels of Duits.</span></p>
       <div class="actions">
         <a class="btn btn-primary" href="#contact"><span data-l="en">Send me a message</span><span data-l="nl">Stuur me een bericht</span></a>
         <a class="btn btn-ghost" href="#how"><span data-l="en">How it works</span><span data-l="nl">Hoe het werkt</span></a>
       </div>
     </div>
 
-    <figure class="scope" id="scope" style="margin:0">
-      <svg viewBox="0 -14 440 466" role="img" aria-labelledby="scope-title scope-desc">
+    <figure class="scope" id="scope" data-mode="clean">
+      <svg viewBox="0 0 440 478" role="img" aria-labelledby="scope-title scope-desc">
         <title id="scope-title" data-i18n="svgTitle">Top-down view of the larynx</title>
-        <desc id="scope-desc" data-i18n="svgDesc">The true vocal folds form a V shape in the middle. The false vocal folds sit just above and to the sides. In false-chord mode the false folds move inward and vibrate to make the sound, while the true folds stay relaxed.</desc>
+        <desc id="scope-desc" data-i18n="svgDesc">Drawing of the larynx seen from above. The true vocal folds form a V in the middle; the false vocal folds lie just above and to the sides. Breathing: everything is open. Singing: the true folds close and vibrate. False chord: the false folds move in and vibrate while the true folds stay relaxed.</desc>
         <defs>
-          <radialGradient id="tissue" cx="50%" cy="45%" r="60%">
-            <stop offset="0" stop-color="#C9636A"/>
-            <stop offset=".55" stop-color="#8E2E37"/>
-            <stop offset="1" stop-color="#3A1219"/>
+          <radialGradient id="inlet" cx="50%" cy="46%" r="62%">
+            <stop offset="0" stop-color="#6A2430"/>
+            <stop offset=".7" stop-color="#3F121A"/>
+            <stop offset="1" stop-color="#2A0C12"/>
           </radialGradient>
-          <radialGradient id="glowg" cx="50%" cy="55%" r="50%">
-            <stop offset="0" stop-color="#E9898A" stop-opacity=".9"/>
-            <stop offset="1" stop-color="#E9898A" stop-opacity="0"/>
-          </radialGradient>
-          <linearGradient id="ffg" x1="0" x2="1">
-            <stop offset="0" stop-color="#B9474F"/>
-            <stop offset="1" stop-color="#E58C8C"/>
-          </linearGradient>
-          <linearGradient id="ffg-r" x1="1" x2="0">
-            <stop offset="0" stop-color="#B9474F"/>
-            <stop offset="1" stop-color="#E58C8C"/>
-          </linearGradient>
-          <clipPath id="lens"><circle cx="220" cy="220" r="196"/></clipPath>
+          <linearGradient id="tfl" gradientUnits="userSpaceOnUse" x1="216" y1="0" x2="150" y2="0"><stop offset="0" stop-color="#B0565F"/><stop offset="1" stop-color="#5A1D27"/></linearGradient>
+          <linearGradient id="tfr" gradientUnits="userSpaceOnUse" x1="224" y1="0" x2="290" y2="0"><stop offset="0" stop-color="#B0565F"/><stop offset="1" stop-color="#5A1D27"/></linearGradient>
+          <linearGradient id="ffl" x1="0" x2="1"><stop offset="0" stop-color="#6E2530"/><stop offset="1" stop-color="#C66A70"/></linearGradient>
+          <linearGradient id="ffr" x1="1" x2="0"><stop offset="0" stop-color="#6E2530"/><stop offset="1" stop-color="#C66A70"/></linearGradient>
+          <linearGradient id="epi" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F3E7DC" stop-opacity=".34"/><stop offset="1" stop-color="#F3E7DC" stop-opacity=".06"/></linearGradient>
+          <pattern id="hatch" width="4.5" height="4.5" patternUnits="userSpaceOnUse" patternTransform="rotate(38)">
+            <line x1="0" y1="0" x2="0" y2="4.5" stroke="#F3B8B2" stroke-width=".7" stroke-opacity=".38"/>
+          </pattern>
+          <clipPath id="vest"><path d="M197 112C160 124 132 158 126 204C120 264 132 334 152 352L288 352C308 334 320 264 314 204C308 158 280 124 243 112C230 108 210 108 197 112Z"/></clipPath>
+          <pattern id="hatch2" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(-50)">
+            <line x1="0" y1="0" x2="0" y2="5" stroke="#F3E7DC" stroke-width=".6" stroke-opacity=".14"/>
+          </pattern>
         </defs>
 
-        <circle cx="220" cy="220" r="204" fill="none" stroke="#4D1A22" stroke-width="6"/>
-        <g clip-path="url(#lens)">
-          <rect width="440" height="440" fill="url(#tissue)"/>
-          <ellipse class="glow" cx="220" cy="240" rx="120" ry="140" fill="url(#glowg)" opacity="0"/>
-          <path d="M120 62 Q220 20 320 62 Q300 96 220 92 Q140 96 120 62Z" fill="#E4A19B" opacity=".9"/>
-          <path d="M220 118 L176 330 Q220 352 264 330 Z" fill="#170508"/>
-          <path d="M218 116 L172 330" stroke="#FFF4EA" stroke-width="13" stroke-linecap="round"/>
-          <path d="M222 116 L268 330" stroke="#FFF4EA" stroke-width="13" stroke-linecap="round"/>
-          <g class="ff ff-l"><g class="buzz">
-            <path d="M196 112 Q150 190 142 334 Q118 300 108 220 Q116 150 196 112Z" fill="url(#ffg)"/>
-          </g></g>
-          <g class="ff ff-r"><g class="buzz">
-            <path d="M244 112 Q290 190 298 334 Q322 300 332 220 Q324 150 244 112Z" fill="url(#ffg-r)"/>
-          </g></g>
-          <ellipse cx="172" cy="354" rx="34" ry="22" fill="#D77C80"/>
-          <ellipse cx="268" cy="354" rx="34" ry="22" fill="#D77C80"/>
+        <!-- instrument ring -->
+        <g aria-hidden="true" fill="none" stroke="#F3E7DC">
+          <circle cx="220" cy="226" r="200" stroke-opacity=".16"/>
+          <path d="M423.0 226.0L432.0 226.0M422.2 243.7L426.2 244.0M419.9 261.3L423.9 261.9M416.1 278.5L419.9 279.6M410.8 295.4L414.5 296.8M404.0 311.8L407.6 313.5M395.8 327.5L403.6 332.0M386.3 342.4L389.6 344.7M375.5 356.5L378.6 359.1M363.5 369.5L366.4 372.4M350.5 381.5L353.1 384.6M336.4 392.3L338.7 395.6M321.5 401.8L326.0 409.6M305.8 410.0L307.5 413.6M289.4 416.8L290.8 420.5M272.5 422.1L273.6 425.9M255.3 425.9L255.9 429.9M237.7 428.2L238.0 432.2M220.0 429.0L220.0 438.0M202.3 428.2L202.0 432.2M184.7 425.9L184.1 429.9M167.5 422.1L166.4 425.9M150.6 416.8L149.2 420.5M134.2 410.0L132.5 413.6M118.5 401.8L114.0 409.6M103.6 392.3L101.3 395.6M89.5 381.5L86.9 384.6M76.5 369.5L73.6 372.4M64.5 356.5L61.4 359.1M53.7 342.4L50.4 344.7M44.2 327.5L36.4 332.0M36.0 311.8L32.4 313.5M29.2 295.4L25.5 296.8M23.9 278.5L20.1 279.6M20.1 261.3L16.1 261.9M17.8 243.7L13.8 244.0M17.0 226.0L8.0 226.0M17.8 208.3L13.8 208.0M20.1 190.7L16.1 190.1M23.9 173.5L20.1 172.4M29.2 156.6L25.5 155.2M36.0 140.2L32.4 138.5M44.2 124.5L36.4 120.0M53.7 109.6L50.4 107.3M64.5 95.5L61.4 92.9M76.5 82.5L73.6 79.6M89.5 70.5L86.9 67.4M103.6 59.7L101.3 56.4M118.5 50.2L114.0 42.4M134.2 42.0L132.5 38.4M150.6 35.2L149.2 31.5M167.5 29.9L166.4 26.1M184.7 26.1L184.1 22.1M202.3 23.8L202.0 19.8M220.0 23.0L220.0 14.0M237.7 23.8L238.0 19.8M255.3 26.1L255.9 22.1M272.5 29.9L273.6 26.1M289.4 35.2L290.8 31.5M305.8 42.0L307.5 38.4M321.5 50.2L326.0 42.4M336.4 59.7L338.7 56.4M350.5 70.5L353.1 67.4M363.5 82.5L366.4 79.6M375.5 95.5L378.6 92.9M386.3 109.6L389.6 107.3M395.8 124.5L403.6 120.0M404.0 140.2L407.6 138.5M410.8 156.6L414.5 155.2M416.1 173.5L419.9 172.4M419.9 190.7L423.9 190.1M422.2 208.3L426.2 208.0" stroke-opacity=".22" stroke-width=".8"/>
         </g>
 
+        <!-- laryngeal inlet -->
+        <path d="M220 66C304 66 346 140 344 230C342 312 304 376 264 388C246 393 232 384 220 376C208 384 194 393 176 388C136 376 98 312 96 230C94 140 136 66 220 66Z" fill="url(#inlet)" stroke="#F3E7DC" stroke-opacity=".55" stroke-width="1.2"/>
+        <path d="M220 66C304 66 346 140 344 230C342 312 304 376 264 388C246 393 232 384 220 376C208 384 194 393 176 388C136 376 98 312 96 230C94 140 136 66 220 66Z" fill="url(#hatch2)"/>
+        <g fill="none" stroke="#F3E7DC" stroke-opacity=".1" aria-hidden="true">
+          <path d="M220 82C292 82 328 148 326 230C324 304 292 360 258 370"/>
+          <path d="M220 82C148 82 112 148 114 230C116 304 148 360 182 370"/>
+          <path d="M220 98C280 98 310 156 309 230C308 296 282 344 254 352"/>
+          <path d="M220 98C160 98 130 156 131 230C132 296 158 344 186 352"/>
+        </g>
+
+        <!-- epiglottis -->
+        <path d="M146 96C164 58 276 58 294 96C280 86 252 80 220 80C188 80 160 86 146 96Z" fill="url(#epi)" stroke="#F3E7DC" stroke-opacity=".75" stroke-width="1.1"/>
+        <g fill="none" stroke="#F3E7DC" stroke-opacity=".28" stroke-width=".8" aria-hidden="true">
+          <path d="M162 88C182 70 258 70 278 88"/><path d="M176 84C192 74 248 74 264 84"/>
+        </g>
+
+        <path d="M197 112C160 124 132 158 126 204C120 264 132 334 152 352L288 352C308 334 320 264 314 204C308 158 280 124 243 112C230 108 210 108 197 112Z" fill="#5A1D27"/>
+        <g clip-path="url(#vest)">
+        <!-- airway with tracheal rings -->
+        <path d="M220 122L170 340Q220 352 270 340Z" fill="#0E0307"/>
+        <g fill="none" stroke="#F3E7DC" stroke-opacity=".12" aria-hidden="true">
+          <path d="M196 300Q220 310 244 300"/><path d="M200 272Q220 281 240 272"/><path d="M204 244Q220 252 236 244"/><path d="M208 216Q220 222 232 216"/>
+        </g>
+
+        <!-- true vocal folds -->
+        <g class="tf tf-l">
+          <path d="M219 124L187 336L186 380L110 380L110 96L219 96Z" fill="url(#tfl)"/>
+          <path d="M219 124L187 336" stroke="#FFF4EA" stroke-width="5" stroke-linecap="round"/>
+          <path d="M215 128L185 330" stroke="#F3E7DC" stroke-opacity=".35" stroke-width=".7"/>
+        </g>
+        <g class="tf tf-r">
+          <path d="M221 124L253 336L254 380L330 380L330 96L221 96Z" fill="url(#tfr)"/>
+          <path d="M221 124L253 336" stroke="#FFF4EA" stroke-width="5" stroke-linecap="round"/>
+          <path d="M225 128L255 330" stroke="#F3E7DC" stroke-opacity=".35" stroke-width=".7"/>
+        </g>
+        </g>
+        <g class="vib vib-tf" fill="none" stroke="#FFF4EA" stroke-width="1" stroke-linecap="round" aria-hidden="true">
+          <path d="M213 190q-4 12 0 24M209 188q-6 14 0 28"/><path d="M227 190q4 12 0 24M231 188q6 14 0 28"/>
+          <path d="M210 262q-4 12 0 24M206 260q-6 14 0 28"/><path d="M230 262q4 12 0 24M234 260q6 14 0 28"/>
+        </g>
+
+        <!-- false (ventricular) vocal folds -->
+        <g class="ff ff-l"><g class="buzz">
+          <path d="M197 118C164 148 146 226 154 348C136 332 122 264 128 204C134 160 162 128 197 118Z" fill="url(#ffl)" stroke="#E9898A" stroke-width="1.1"/>
+          <path d="M197 118C164 148 146 226 154 348C136 332 122 264 128 204C134 160 162 128 197 118Z" fill="url(#hatch)"/>
+          <g fill="none" stroke="#F0A39E" stroke-opacity=".55" stroke-width=".7" aria-hidden="true">
+            <path d="M176 150c-6 20-12 48-12 76"/><path d="M160 186c-3 26-2 60 4 92"/><path d="M146 230c0 30 3 56 9 80"/>
+          </g>
+        </g></g>
+        <g class="ff ff-r"><g class="buzz">
+          <path d="M243 118C276 148 294 226 286 348C304 332 318 264 312 204C306 160 278 128 243 118Z" fill="url(#ffr)" stroke="#E9898A" stroke-width="1.1"/>
+          <path d="M243 118C276 148 294 226 286 348C304 332 318 264 312 204C306 160 278 128 243 118Z" fill="url(#hatch)"/>
+          <g fill="none" stroke="#F0A39E" stroke-opacity=".55" stroke-width=".7" aria-hidden="true">
+            <path d="M264 150c6 20 12 48 12 76"/><path d="M280 186c3 26 2 60-4 92"/><path d="M294 230c0 30-3 56-9 80"/>
+          </g>
+        </g></g>
+        <g class="vib vib-ff" fill="none" stroke="#F3B8B2" stroke-width="1.1" stroke-linecap="round" aria-hidden="true">
+          <path d="M196 196q-5 14 0 28M190 192q-7 18 0 36"/><path d="M244 196q5 14 0 28M250 192q7 18 0 36"/>
+          <path d="M196 262q-5 14 0 28M190 258q-7 18 0 36"/><path d="M244 262q5 14 0 28M250 258q7 18 0 36"/>
+        </g>
+
+        <!-- arytenoids -->
+        <g class="ary ary-l">
+          <ellipse cx="183" cy="356" rx="25" ry="17" fill="#6A2530" stroke="#F3E7DC" stroke-opacity=".5" stroke-width="1"/>
+          <ellipse cx="185" cy="353" rx="13" ry="8" fill="none" stroke="#F3E7DC" stroke-opacity=".22" stroke-width=".8"/>
+        </g>
+        <g class="ary ary-r">
+          <ellipse cx="257" cy="356" rx="25" ry="17" fill="#6A2530" stroke="#F3E7DC" stroke-opacity=".5" stroke-width="1"/>
+          <ellipse cx="255" cy="353" rx="13" ry="8" fill="none" stroke="#F3E7DC" stroke-opacity=".22" stroke-width=".8"/>
+        </g>
+
+        <!-- annotations -->
         <g aria-hidden="true">
-          <line x1="248" y1="190" x2="392" y2="44" stroke="#F3E7DC" stroke-width="1.2" opacity=".75"/>
-          <circle cx="248" cy="190" r="3.5" fill="#FFF4EA"/>
-          <text class="lbl-strong" x="440" y="6" text-anchor="end" data-i18n="tfTitle">True vocal folds</text>
-          <text class="lbl" x="440" y="24" text-anchor="end" data-i18n="tfSub">your singing voice</text>
-          <line x1="126" y1="262" x2="52" y2="404" stroke="#F3E7DC" stroke-width="1.2" opacity=".75"/>
-          <circle cx="126" cy="262" r="3.5" fill="#FFF4EA"/>
-          <text class="lbl-strong" x="0" y="428" data-i18n="ffTitle">False vocal folds</text>
-          <text class="lbl" x="0" y="446" data-i18n="ffSub">the classic source of distortion</text>
+          <g stroke="#F3E7DC" stroke-opacity=".7" stroke-width=".8" fill="none">
+            <path d="M178 76L128 52H0"/>
+            <path d="M227 176L318 78H440"/>
+            <path d="M152 230L74 436H0"/>
+          </g>
+          <g fill="#FFF4EA"><circle cx="178" cy="76" r="2.6"/><circle cx="227" cy="176" r="2.6"/><circle cx="152" cy="230" r="2.6"/></g>
+          <text class="lbl-minor" x="0" y="44" data-i18n="epiTitle">Epiglottis</text>
+          <text class="lbl-strong" x="440" y="52" text-anchor="end" data-i18n="tfTitle">True vocal folds</text>
+          <text class="lbl" x="440" y="69" text-anchor="end" data-i18n="tfSub">your singing voice</text>
+          <text class="lbl-strong" x="0" y="455" data-i18n="ffTitle">False vocal folds</text>
+          <text class="lbl" x="0" y="472" data-i18n="ffSub">the classic source of distortion</text>
         </g>
       </svg>
       <div class="scope-toggle" role="group" data-i18n-aria="toggleAria" aria-label="Show the larynx while">
-        <button type="button" aria-pressed="true" data-mode="clean" data-i18n="clean">Singing clean</button>
-        <button type="button" aria-pressed="false" data-mode="scream">False chord</button>
+        <button type="button" aria-pressed="false" data-mode="rest" data-i18n="rest">Breathing</button>
+        <button type="button" aria-pressed="true" data-mode="clean" data-i18n="clean">Singing</button>
+        <button type="button" aria-pressed="false" data-mode="scream" data-i18n="scream">False chord</button>
       </div>
       <figcaption class="scope-caption" id="scope-caption" aria-live="polite"></figcaption>
     </figure>
@@ -320,7 +399,7 @@ document.documentElement.lang=l})();
     <div>
       <h2 id="path-h"><span data-l="en">How we get you there</span><span data-l="nl">Zo kom je er</span></h2>
       <p class="muted"><span data-l="en">Everyone moves at their own pace, but most students go through these stages in this order.</span><span data-l="nl">Iedereen gaat in z&rsquo;n eigen tempo, maar de meeste leerlingen doorlopen deze stappen in deze volgorde.</span></p>
-      <div class="cta-row"><a class="btn btn-primary" href="#contact" data-prefill="intro"><span data-l="en">Book an intro session</span><span data-l="nl">Plan een kennismakingsles</span></a></div>
+      <div class="cta-row"><a class="btn btn-primary" href="#contact" data-prefill="intro"><span data-l="en">Book a free get-to-know</span><span data-l="nl">Plan een gratis kennismaking</span></a></div>
     </div>
     <ol class="path">
       <li>
@@ -391,14 +470,14 @@ document.documentElement.lang=l})();
     <h2 id="lessons-h"><span data-l="en">Lessons</span><span data-l="nl">Lessen</span></h2>
     <div class="lessons">
       <div class="lesson">
-        <h3><span data-l="en">Intro session</span><span data-l="nl">Kennismakingsles</span></h3>
-        <p><span data-l="en">We hear where you're at, try your first exercises, and see if the way I teach suits you.</span><span data-l="nl">We horen waar je staat, doen je eerste oefeningen en kijken of mijn manier van lesgeven bij je past.</span></p>
-        <span class="len">30 min</span>
+        <h3><span data-l="en">Free get-to-know</span><span data-l="nl">Gratis kennismaking</span></h3>
+        <p><span data-l="en">We talk about your experience and what you'd like to learn, and see whether we're a good match and whether you'd like to learn from me.</span><span data-l="nl">We bespreken je ervaring en wat je wilt leren, en kijken of het klikt en of je van mij wilt leren.</span></p>
+        <span class="len">15 min<br><span data-l="en">Free</span><span data-l="nl">Gratis</span></span>
       </div>
       <div class="lesson">
-        <h3><span data-l="en">Single lesson</span><span data-l="nl">Losse les</span></h3>
-        <p><span data-l="en">A full one-on-one lesson with exercises to practise at home before the next one.</span><span data-l="nl">Een volledige één-op-één les, met oefeningen om thuis te doen tot de volgende keer.</span></p>
-        <span class="len">60 min</span>
+        <h3><span data-l="en">Lesson</span><span data-l="nl">Les</span></h3>
+        <p><span data-l="en">A one-on-one lesson with exercises to practise at home before the next one.</span><span data-l="nl">Een één-op-één les, met oefeningen om thuis te doen tot de volgende keer.</span></p>
+        <span class="len">50 min<br>€50</span>
       </div>
       <div class="lesson">
         <h3><span data-l="en">Lesson pack</span><span data-l="nl">Lessenpakket</span></h3>
@@ -406,8 +485,8 @@ document.documentElement.lang=l})();
         <span class="len"><span data-l="en">4 or 8 lessons</span><span data-l="nl">4 of 8 lessen</span></span>
       </div>
     </div>
-    <p class="note"><span data-l="en">Lessons run online over video call, or in person in Den Haag. Ask about rates for regular lessons in your message.</span><span data-l="nl">Lessen zijn online via videobellen, of live in Den Haag. Vraag in je bericht naar de tarieven voor reguliere lessen.</span></p>
-    <div class="cta-row"><a class="btn btn-primary" href="#contact" data-prefill="intro"><span data-l="en">Book an intro session</span><span data-l="nl">Plan een kennismakingsles</span></a></div>
+    <p class="note"><span data-l="en">Lessons run online over video call or in person in Den Haag, in Dutch, English or German. Ask about pack rates in your message.</span><span data-l="nl">Lessen zijn online via videobellen of live in Den Haag, in het Nederlands, Engels of Duits. Vraag in je bericht naar de prijs van een lessenpakket.</span></p>
+    <div class="cta-row"><a class="btn btn-primary" href="#contact" data-prefill="intro"><span data-l="en">Book a free get-to-know</span><span data-l="nl">Plan een gratis kennismaking</span></a></div>
   </div>
 </section>
 
@@ -559,15 +638,17 @@ const I18N = {
   en:{
     title:"False-chord harsh vocal lessons with Andy",
     svgTitle:"Top-down view of the larynx",
-    svgDesc:"The true vocal folds form a V shape in the middle. The false vocal folds sit just above and to the sides. In false-chord mode the false folds move inward and vibrate to make the sound, while the true folds stay relaxed.",
+    svgDesc:"Drawing of the larynx seen from above. The true vocal folds form a V in the middle; the false vocal folds lie just above and to the sides. Breathing: everything is open. Singing: the true folds close and vibrate. False chord: the false folds move in and vibrate while the true folds stay relaxed.",
+    epiTitle:"Epiglottis",
     tfTitle:"True vocal folds", tfSub:"your singing voice",
     ffTitle:"False vocal folds", ffSub:"the classic source of distortion",
-    toggleAria:"Show the larynx while", clean:"Singing clean",
-    capClean:"Clean singing: the false folds stay open and out of the way.",
+    toggleAria:"Show the larynx while", rest:"Breathing", clean:"Singing", scream:"False chord",
+    capRest:"Breathing: both pairs of folds are open and the air flows freely.",
+    capClean:"Clean singing: the true vocal folds close and vibrate. The false folds stay open and out of the way.",
     capScream:"False chord: the false folds move in and vibrate on your breath. Your true vocal folds stay relaxed and don’t make the sound.",
     exp1:"I've never tried it", exp2:"I've tried on my own",
     exp3:"I can do it, but it hurts or tires me out", exp4:"I'm comfortable and want more range or power",
-    introMsg:"Hi Andy, I'd like to book an intro session.",
+    introMsg:"Hi Andy, I'd like to book the free 15-minute get-to-know.",
     send:"Send message", sending:"Sending…",
     offTitle:"The form isn’t connected yet", offBody:"Messages can’t be delivered until a form endpoint is added to this page.",
     okTitle:"Message sent", okBody:"Thanks! I’ll reply to {email} within a few days.",
@@ -576,15 +657,17 @@ const I18N = {
   nl:{
     title:"False-chord harsh vocal lessen bij Andy",
     svgTitle:"Bovenaanzicht van het strottenhoofd",
-    svgDesc:"De echte stemplooien vormen een V in het midden. De valse stemplooien zitten er net boven en aan de zijkanten. Bij false chord bewegen de valse plooien naar binnen en trillen ze om het geluid te maken, terwijl de echte stemplooien ontspannen blijven.",
+    svgDesc:"Tekening van het strottenhoofd van bovenaf. De echte stemplooien vormen een V in het midden; de valse stemplooien liggen er net boven en aan de zijkanten. Ademen: alles staat open. Zingen: de echte stemplooien sluiten en trillen. False chord: de valse stemplooien bewegen naar binnen en trillen, terwijl de echte stemplooien ontspannen blijven.",
+    epiTitle:"Strotklepje",
     tfTitle:"Echte stemplooien", tfSub:"je zangstem",
     ffTitle:"Valse stemplooien", ffSub:"de klassieke bron van distortion",
-    toggleAria:"Toon het strottenhoofd bij", clean:"Zuiver zingen",
-    capClean:"Zuiver zingen: de valse stemplooien blijven open en uit de weg.",
+    toggleAria:"Toon het strottenhoofd bij", rest:"Ademen", clean:"Zingen", scream:"False chord",
+    capRest:"Ademen: beide paren plooien staan open en de lucht stroomt vrij.",
+    capClean:"Zuiver zingen: de echte stemplooien sluiten en trillen. De valse stemplooien blijven open en uit de weg.",
     capScream:"False chord: de valse stemplooien bewegen naar elkaar toe en trillen op je adem. Je echte stemplooien blijven ontspannen en maken het geluid niet.",
     exp1:"Ik heb het nog nooit geprobeerd", exp2:"Ik heb het zelf geprobeerd",
     exp3:"Ik kan het, maar het doet pijn of ik word snel moe", exp4:"Ik kan het goed en wil meer bereik of kracht",
-    introMsg:"Hoi Andy, ik wil graag een kennismakingsles plannen.",
+    introMsg:"Hoi Andy, ik wil graag een gratis kennismaking van 15 minuten plannen.",
     send:"Verstuur bericht", sending:"Versturen…",
     offTitle:"Het formulier is nog niet gekoppeld", offBody:"Berichten kunnen pas verstuurd worden als er een formulieradres aan deze pagina is toegevoegd.",
     okTitle:"Bericht verstuurd", okBody:"Bedankt! Ik reageer binnen een paar dagen op {email}.",
@@ -593,6 +676,7 @@ const I18N = {
 };
 let lang = document.documentElement.lang === 'nl' ? 'nl' : 'en';
 let scopeMode = 'clean';
+const capKey = () => ({rest:'capRest', clean:'capClean', scream:'capScream'})[scopeMode];
 const t = k => I18N[lang][k];
 
 function applyLang(l, save){
@@ -602,7 +686,7 @@ function applyLang(l, save){
   document.querySelectorAll('[data-i18n]').forEach(el=>{ el.textContent = t(el.dataset.i18n); });
   document.querySelectorAll('[data-i18n-aria]').forEach(el=>{ el.setAttribute('aria-label', t(el.dataset.i18nAria)); });
   document.querySelectorAll('[data-set-lang]').forEach(b=>b.setAttribute('aria-pressed', b.dataset.setLang===l ? 'true':'false'));
-  document.getElementById('scope-caption').textContent = t(scopeMode==='scream' ? 'capScream' : 'capClean');
+  document.getElementById('scope-caption').textContent = t(capKey());
   document.getElementById('lang-field').value = l;
   if(save){ try{ localStorage.setItem('hv-lang', l); }catch(e){} }
 }
@@ -616,9 +700,9 @@ applyLang(lang,false);
   scope.querySelectorAll('.scope-toggle button').forEach(b=>{
     b.addEventListener('click',()=>{
       scopeMode = b.dataset.mode;
-      scope.classList.toggle('scream', scopeMode==='scream');
+      scope.dataset.mode = scopeMode;
       scope.querySelectorAll('.scope-toggle button').forEach(x=>x.setAttribute('aria-pressed', x===b ? 'true':'false'));
-      cap.textContent = t(scopeMode==='scream' ? 'capScream' : 'capClean');
+      cap.textContent = t(capKey());
     });
   });
 })();
