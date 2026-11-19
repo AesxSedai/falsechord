@@ -4,7 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>False-chord harsh vocal lessons with Andy</title>
-<meta name="description" content="Eén-op-één harsh vocal lessen in false-chord techniek voor beginners, online of live in Den Haag. One-on-one false-chord harsh vocal lessons for beginners.">
+<meta name="description" content="Eén-op-één screamles in false-chord techniek, voor beginners en ervaren screamers. Online of live in Den Haag, in het Nederlands, Engels of Duits. Gratis kennismaking van 15 minuten.">
+<link rel="canonical" href="https://falsechord.nl/">
+<meta name="theme-color" content="#2A0C12">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://falsechord.nl/">
+<meta property="og:title" content="False-chord harsh vocal lessons with Andy">
+<meta property="og:description" content="One-on-one scream lessons for beginners and experienced screamers. Online or in person in Den Haag. Free 15-minute get-to-know.">
+<meta property="og:image" content="https://falsechord.nl/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <script>
 (function(){var l;try{l=localStorage.getItem('hv-lang')}catch(e){}
 if(l!=='nl'&&l!=='en'){l=/^nl\b/i.test(navigator.language||'')?'nl':'en'}
@@ -182,9 +194,9 @@ document.documentElement.lang=l})();
   .chips{display:flex;flex-wrap:wrap;gap:10px}
   .chips label{margin:0;font-weight:400}
   .chips input{position:absolute;opacity:0;pointer-events:none}
-  .chips span{display:inline-block;padding:10px 18px;border-radius:999px;border:2px solid var(--blood-3);cursor:pointer}
-  .chips input:checked + span{background:var(--bone);color:var(--blood);border-color:var(--bone);font-weight:700}
-  .chips input:focus-visible + span{outline:3px solid var(--bruise);outline-offset:2px}
+  .chips label > span{display:inline-block;padding:10px 18px;border-radius:999px;border:2px solid var(--blood-3);cursor:pointer}
+  .chips label > input:checked + span{background:var(--bone);color:var(--blood);border-color:var(--bone);font-weight:700}
+  .chips label > input:focus-visible + span{outline:3px solid var(--bruise);outline-offset:2px}
   .err{color:#FFB4A8;font-size:.92rem;margin-top:6px;display:none}
   .invalid .err{display:block}
   .invalid input,.invalid textarea{border-color:#FFB4A8}
@@ -198,7 +210,10 @@ document.documentElement.lang=l})();
   button[disabled]{opacity:.6;cursor:progress}
 
   footer{padding:36px 0 48px;color:var(--bone-dim);font-size:.92rem}
-  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+  footer .wrap{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px}
+  .foot-biz{display:flex;flex-direction:column;gap:2px}
+  .foot-biz strong{color:var(--bone)}
+  .foot-nav{display:flex;gap:20px;flex-wrap:wrap}
 
   /* ---------- language ---------- */
   html[lang="nl"] [data-l="en"], html[lang="en"] [data-l="nl"]{display:none!important}
@@ -211,8 +226,17 @@ document.documentElement.lang=l})();
 
   .tracks{display:grid;gap:18px;margin-top:16px;max-width:var(--measure)}
   .track iframe{display:block;width:100%;height:152px;border:0;border-radius:12px;background:var(--blood-2)}
+  .track-load{display:flex;align-items:center;gap:16px;width:100%;text-align:left;cursor:pointer;
+              background:var(--blood-2);border:1px solid var(--blood-3);border-radius:12px;padding:16px 18px;color:var(--bone);font:inherit}
+  .track-load:hover{border-color:var(--mucosa)}
+  .track-play{flex:none;display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--mucosa);color:var(--blood)}
+  .track-meta{display:flex;flex-direction:column;line-height:1.3}
+  .track-meta span{color:var(--bone-dim);font-size:.9rem}
+  .track-note{margin-left:auto;color:var(--bone-dim);font-size:.85rem;text-align:right}
+  @media (max-width:520px){.track-note{display:none}}
   .track-link{display:inline-block;margin-top:6px;font-size:.92rem}
   .cta-row{margin-top:28px}
+  .form-privacy{font-size:.88rem;color:var(--bone-dim);margin:-6px 0 0}
 </style>
 </head>
 <body>
@@ -236,7 +260,7 @@ document.documentElement.lang=l})();
   <div class="hero">
     <div>
       <h1><span data-l="en">Learn to scream without shredding your voice.</span><span data-l="nl">Leer screamen zonder je stem kapot te maken.</span></h1>
-      <p class="lede"><span data-l="en">One-on-one lessons in false-chord technique, made for beginners. Online or in person in Den Haag, in Dutch, English or German.</span><span data-l="nl">Eén-op-één lessen in false-chord techniek, speciaal voor beginners. Online of live in Den Haag, in het Nederlands, Engels of Duits.</span></p>
+      <p class="lede"><span data-l="en">One-on-one lessons in false-chord technique, for beginners and experienced screamers. Online or in person in Den Haag, in Dutch, English or German.</span><span data-l="nl">Eén-op-één lessen in false-chord techniek, voor beginners en ervaren screamers. Online of live in Den Haag, in het Nederlands, Engels of Duits.</span></p>
       <div class="actions">
         <a class="btn btn-primary" href="#contact"><span data-l="en">Send me a message</span><span data-l="nl">Stuur me een bericht</span></a>
         <a class="btn btn-ghost" href="#how"><span data-l="en">How it works</span><span data-l="nl">Hoe het werkt</span></a>
@@ -351,7 +375,10 @@ document.documentElement.lang=l})();
             <path d="M227 176L318 78H440"/>
             <path d="M152 230L74 436H0"/>
           </g>
-          <g fill="#FFF4EA"><circle cx="178" cy="76" r="2.6"/><circle cx="227" cy="176" r="2.6"/><circle cx="152" cy="230" r="2.6"/></g>
+          <path d="M266 362L362 438H440" stroke="#F3E7DC" stroke-opacity=".7" stroke-width=".8" fill="none"/>
+          <g fill="#FFF4EA"><circle cx="178" cy="76" r="2.6"/><circle cx="227" cy="176" r="2.6"/><circle cx="152" cy="230" r="2.6"/><circle cx="266" cy="362" r="2.6"/></g>
+          <text class="lbl-minor" x="440" y="455" text-anchor="end" data-i18n="aryTitle">Arytenoids</text>
+          <text class="lbl" x="440" y="472" text-anchor="end" data-i18n="arySub">open and close the folds</text>
           <text class="lbl-minor" x="0" y="44" data-i18n="epiTitle">Epiglottis</text>
           <text class="lbl-strong" x="440" y="52" text-anchor="end" data-i18n="tfTitle">True vocal folds</text>
           <text class="lbl" x="440" y="69" text-anchor="end" data-i18n="tfSub">your singing voice</text>
@@ -373,7 +400,7 @@ document.documentElement.lang=l})();
 <section id="how">
   <div class="wrap split">
     <div>
-      <h2><span data-l="en">What false chord actually is</span><span data-l="nl">Wat false chord eigenlijk is</span></h2>
+      <h2><span data-l="en">What false chord is (roughly)</span><span data-l="nl">Wat false chord (ongeveer) is</span></h2>
     </div>
     <div>
       <div data-l="en">
@@ -399,6 +426,7 @@ document.documentElement.lang=l})();
     <div>
       <h2 id="path-h"><span data-l="en">How we get you there</span><span data-l="nl">Zo kom je er</span></h2>
       <p class="muted"><span data-l="en">Everyone moves at their own pace, but most students go through these stages in this order.</span><span data-l="nl">Iedereen gaat in z&rsquo;n eigen tempo, maar de meeste leerlingen doorlopen deze stappen in deze volgorde.</span></p>
+      <p class="muted"><span data-l="en">Already screaming? Then we skip what you have down and go straight to the techniques you want to learn.</span><span data-l="nl">Scream je al? Dan slaan we over wat je al beheerst en gaan we meteen naar de technieken die je wilt leren.</span></p>
       <div class="cta-row"><a class="btn btn-primary" href="#contact" data-prefill="intro"><span data-l="en">Book a free get-to-know</span><span data-l="nl">Plan een gratis kennismaking</span></a></div>
     </div>
     <ol class="path">
@@ -511,11 +539,19 @@ document.documentElement.lang=l})();
       <p class="muted"><span data-l="en">Two tracks with <a href="https://discardedband.com">DISCARDED</a>:</span><span data-l="nl">Twee nummers met <a href="https://discardedband.com">DISCARDED</a>:</span></p>
       <div class="tracks">
         <div class="track">
-          <iframe title="DISCARDED – Flourish || Forsaken (Spotify)" src="https://open.spotify.com/embed/track/0SjDcuf7ojGCVxZdTRZODD?utm_source=generator&amp;theme=0" height="152" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+          <button type="button" class="track-load" data-src="https://open.spotify.com/embed/track/0SjDcuf7ojGCVxZdTRZODD?utm_source=generator&amp;theme=0" data-title="DISCARDED – Flourish || Forsaken (Spotify)">
+            <span class="track-play"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
+            <span class="track-meta"><strong>Flourish || Forsaken</strong><span>DISCARDED</span></span>
+            <span class="track-note"><span data-l="en">Play here (loads Spotify)</span><span data-l="nl">Hier afspelen (laadt Spotify)</span></span>
+          </button>
           <a class="track-link" href="https://open.spotify.com/track/0SjDcuf7ojGCVxZdTRZODD"><span data-l="en">Flourish || Forsaken on Spotify</span><span data-l="nl">Flourish || Forsaken op Spotify</span></a>
         </div>
         <div class="track">
-          <iframe title="DISCARDED – Hollow (Spotify)" src="https://open.spotify.com/embed/track/1zMEKVKlKlOpq9j6SRnWLG?utm_source=generator&amp;theme=0" height="152" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+          <button type="button" class="track-load" data-src="https://open.spotify.com/embed/track/1zMEKVKlKlOpq9j6SRnWLG?utm_source=generator&amp;theme=0" data-title="DISCARDED – Hollow (Spotify)">
+            <span class="track-play"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span>
+            <span class="track-meta"><strong>Hollow</strong><span>DISCARDED</span></span>
+            <span class="track-note"><span data-l="en">Play here (loads Spotify)</span><span data-l="nl">Hier afspelen (laadt Spotify)</span></span>
+          </button>
           <a class="track-link" href="https://open.spotify.com/track/1zMEKVKlKlOpq9j6SRnWLG"><span data-l="en">Hollow on Spotify</span><span data-l="nl">Hollow op Spotify</span></a>
         </div>
       </div>
@@ -542,6 +578,8 @@ document.documentElement.lang=l})();
           <p>Yes. A decent microphone or headset helps, but a laptop or phone is enough to start. We'll keep the volume low at first anyway.</p></details>
         <details><summary>What if I'm worried about the neighbours?</summary>
           <p>Good false chord is quieter than people expect. Many of the exercises are done at low volume, and I'll show you how to practise without bothering anyone.</p></details>
+        <details><summary>Can I give lessons as a gift?</summary>
+          <p>Yes. Choose &ldquo;Gift voucher&rdquo; in the form below and tell me who it's for. I'll send you a voucher for a lesson or a pack.</p></details>
       </div>
       <div data-l="nl">
         <details><summary>Beschadig ik mijn stem met screamen?</summary>
@@ -554,6 +592,8 @@ document.documentElement.lang=l})();
           <p>Ja. Een goede microfoon of headset helpt, maar een laptop of telefoon is genoeg om te beginnen. We houden het volume in het begin sowieso laag.</p></details>
         <details><summary>En de buren dan?</summary>
           <p>Goede false chord is zachter dan mensen denken. Veel oefeningen doe je op laag volume, en ik laat je zien hoe je kunt oefenen zonder iemand te storen.</p></details>
+        <details><summary>Kan ik lessen cadeau geven?</summary>
+          <p>Ja. Kies &lsquo;Cadeaubon&rsquo; in het formulier hieronder en vertel voor wie hij is. Ik stuur je een bon voor een les of een pakket.</p></details>
       </div>
     </div>
   </div>
@@ -581,12 +621,23 @@ document.documentElement.lang=l})();
         </div>
 
         <div class="field">
+          <label for="interest"><span data-l="en">What would you like?</span><span data-l="nl">Waar heb je interesse in?</span></label>
+          <select id="interest" name="interest">
+            <option value="Free get-to-know" data-i18n="int1">The free 15-minute get-to-know</option>
+            <option value="Lesson" data-i18n="int2">A lesson</option>
+            <option value="Lesson pack" data-i18n="int3">A lesson pack</option>
+            <option value="Gift voucher" data-i18n="int4">A gift voucher</option>
+            <option value="Question" data-i18n="int5">Just a question</option>
+          </select>
+        </div>
+
+        <div class="field">
           <label for="experience"><span data-l="en">Your experience with screaming</span><span data-l="nl">Je ervaring met screamen</span></label>
           <select id="experience" name="experience">
             <option value="Never tried" data-i18n="exp1">I've never tried it</option>
             <option value="Tried on my own" data-i18n="exp2">I've tried on my own</option>
             <option value="Can do it, but it hurts or tires me out" data-i18n="exp3">I can do it, but it hurts or tires me out</option>
-            <option value="Comfortable, wants more range or power" data-i18n="exp4">I'm comfortable and want more range or power</option>
+            <option value="Comfortable, wants more range or power" data-i18n="exp4">I'm comfortable and want more range, power or specific techniques</option>
           </select>
         </div>
 
@@ -611,6 +662,7 @@ document.documentElement.lang=l})();
         <input type="hidden" name="_template" value="table">
 
         <div><button class="btn btn-primary" type="submit" id="send" data-i18n="send">Send message</button></div>
+        <p class="form-privacy"><span data-l="en">Your message reaches my inbox through FormSubmit, only so I can reply. More in the <a href="privacy.html">privacy statement</a>.</span><span data-l="nl">Je bericht komt via FormSubmit in mijn mailbox, alleen zodat ik kan reageren. Meer in de <a href="privacy.html">privacyverklaring</a>.</span></p>
       </form>
       <div class="status" id="status" role="status" tabindex="-1"></div>
     </div>
@@ -619,8 +671,16 @@ document.documentElement.lang=l})();
 
 <footer>
   <div class="wrap">
-    <span><span data-l="en">Andy, harsh vocal coaching in Den Haag and online</span><span data-l="nl">Andy, harsh vocal lessen in Den Haag en online</span></span>
-    <a href="#contact"><span data-l="en">Get in touch</span><span data-l="nl">Neem contact op</span></a>
+    <div class="foot-biz">
+      <strong>Andy Meijer</strong>
+      <span><span data-l="en">Harsh vocal lessons, in person in Den Haag by appointment, and online</span><span data-l="nl">Screamlessen, live in Den Haag op afspraak, en online</span></span>
+      <a class="mail" data-u="andy_meijer" data-d="hotmail.com" href="#contact">andy_meijer [at] hotmail.com</a>
+      <!-- TODO: KvK-nummer (and btw-nummer if applicable) once registered -->
+    </div>
+    <nav class="foot-nav" aria-label="Footer">
+      <a href="privacy.html"><span data-l="en">Privacy statement</span><span data-l="nl">Privacyverklaring</span></a>
+      <a href="#contact"><span data-l="en">Get in touch</span><span data-l="nl">Neem contact op</span></a>
+    </nav>
   </div>
 </footer>
 
@@ -639,7 +699,7 @@ const I18N = {
     title:"False-chord harsh vocal lessons with Andy",
     svgTitle:"Top-down view of the larynx",
     svgDesc:"Drawing of the larynx seen from above. The true vocal folds form a V in the middle; the false vocal folds lie just above and to the sides. Breathing: everything is open. Singing: the true folds close and vibrate. False chord: the false folds move in and vibrate while the true folds stay relaxed.",
-    epiTitle:"Epiglottis",
+    epiTitle:"Epiglottis", aryTitle:"Arytenoids", arySub:"open and close the folds",
     tfTitle:"True vocal folds", tfSub:"your singing voice",
     ffTitle:"False vocal folds", ffSub:"the classic source of distortion",
     toggleAria:"Show the larynx while", rest:"Breathing", clean:"Singing", scream:"False chord",
@@ -647,7 +707,8 @@ const I18N = {
     capClean:"Clean singing: the true vocal folds close and vibrate. The false folds stay open and out of the way.",
     capScream:"False chord: the false folds move in and vibrate on your breath. Your true vocal folds stay relaxed and don’t make the sound.",
     exp1:"I've never tried it", exp2:"I've tried on my own",
-    exp3:"I can do it, but it hurts or tires me out", exp4:"I'm comfortable and want more range or power",
+    exp3:"I can do it, but it hurts or tires me out", exp4:"I'm comfortable and want more range, power or specific techniques",
+    int1:"The free 15-minute get-to-know", int2:"A lesson", int3:"A lesson pack", int4:"A gift voucher", int5:"Just a question",
     introMsg:"Hi Andy, I'd like to book the free 15-minute get-to-know.",
     send:"Send message", sending:"Sending…",
     offTitle:"The form isn’t connected yet", offBody:"Messages can’t be delivered until a form endpoint is added to this page.",
@@ -658,7 +719,7 @@ const I18N = {
     title:"False-chord harsh vocal lessen bij Andy",
     svgTitle:"Bovenaanzicht van het strottenhoofd",
     svgDesc:"Tekening van het strottenhoofd van bovenaf. De echte stemplooien vormen een V in het midden; de valse stemplooien liggen er net boven en aan de zijkanten. Ademen: alles staat open. Zingen: de echte stemplooien sluiten en trillen. False chord: de valse stemplooien bewegen naar binnen en trillen, terwijl de echte stemplooien ontspannen blijven.",
-    epiTitle:"Strotklepje",
+    epiTitle:"Strotklepje", aryTitle:"Arytenoïden", arySub:"openen en sluiten de stemplooien",
     tfTitle:"Echte stemplooien", tfSub:"je zangstem",
     ffTitle:"Valse stemplooien", ffSub:"de klassieke bron van distortion",
     toggleAria:"Toon het strottenhoofd bij", rest:"Ademen", clean:"Zingen", scream:"False chord",
@@ -666,7 +727,8 @@ const I18N = {
     capClean:"Zuiver zingen: de echte stemplooien sluiten en trillen. De valse stemplooien blijven open en uit de weg.",
     capScream:"False chord: de valse stemplooien bewegen naar elkaar toe en trillen op je adem. Je echte stemplooien blijven ontspannen en maken het geluid niet.",
     exp1:"Ik heb het nog nooit geprobeerd", exp2:"Ik heb het zelf geprobeerd",
-    exp3:"Ik kan het, maar het doet pijn of ik word snel moe", exp4:"Ik kan het goed en wil meer bereik of kracht",
+    exp3:"Ik kan het, maar het doet pijn of ik word snel moe", exp4:"Ik kan het goed en wil meer bereik, kracht of specifieke technieken",
+    int1:"De gratis kennismaking van 15 minuten", int2:"Een les", int3:"Een lessenpakket", int4:"Een cadeaubon", int5:"Alleen een vraag",
     introMsg:"Hoi Andy, ik wil graag een gratis kennismaking van 15 minuten plannen.",
     send:"Verstuur bericht", sending:"Versturen…",
     offTitle:"Het formulier is nog niet gekoppeld", offBody:"Berichten kunnen pas verstuurd worden als er een formulieradres aan deze pagina is toegevoegd.",
@@ -707,10 +769,25 @@ applyLang(lang,false);
   });
 })();
 
+/* ---- Spotify players load only on click ---- */
+document.querySelectorAll('.track-load').forEach(btn=>btn.addEventListener('click',()=>{
+  const f = document.createElement('iframe');
+  f.src = btn.dataset.src; f.title = btn.dataset.title; f.height = '152';
+  f.allow = 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
+  btn.replaceWith(f);
+}));
+
+/* ---- email address assembled in the browser ---- */
+document.querySelectorAll('a.mail').forEach(a=>{
+  const addr = a.dataset.u + '@' + a.dataset.d;
+  a.href = 'mailto:' + addr; a.textContent = addr;
+});
+
 /* ---- CTA prefill ---- */
 document.querySelectorAll('[data-prefill="intro"]').forEach(a=>a.addEventListener('click',()=>{
   const m = document.getElementById('message');
   if(!m.value.trim()) m.value = t('introMsg');
+  document.getElementById('interest').value = 'Free get-to-know';
   setTimeout(()=>document.getElementById('name').focus({preventScroll:true}), 400);
 }));
 
