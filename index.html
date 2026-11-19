@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>False-chord harsh vocal lessons with Andy</title>
+<meta name="description" content="Eén-op-één harsh vocal lessen in false-chord techniek voor beginners, online of live in Den Haag. One-on-one false-chord harsh vocal lessons for beginners.">
+<script>
+(function(){var l;try{l=localStorage.getItem('hv-lang')}catch(e){}
+if(l!=='nl'&&l!=='en'){l=/^nl\b/i.test(navigator.language||'')?'nl':'en'}
+document.documentElement.lang=l})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anybody:wdth,wght@50..150,400..900&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blood:#2A0C12;
+    --blood-2:#3A1219;
+    --blood-3:#4D1A22;
+    --bone:#F3E7DC;
+    --bone-dim:#CDB8AC;
+    --mucosa:#E9898A;
+    --mucosa-deep:#C2575E;
+    --fold:#FFF4EA;
+    --bruise:#A889B8;
+    --display:"Anybody", "Arial Narrow", sans-serif;
+    --body:"Atkinson Hyperlegible", system-ui, sans-serif;
+    --measure:62ch;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{
+    margin:0;background:var(--blood);color:var(--bone);
+    font-family:var(--body);font-size:1.0625rem;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--mucosa)}
+  a:hover{color:var(--fold)}
+  :focus-visible{outline:3px solid var(--bruise);outline-offset:3px;border-radius:4px}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 clamp(20px,5vw,48px)}
+
+  /* ---------- header ---------- */
+  .top{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
+  .mark{font-family:var(--display);font-weight:800;font-variation-settings:"wdth" 70;
+        font-size:1.35rem;letter-spacing:.01em;color:var(--bone);text-decoration:none}
+  .mark span{color:var(--mucosa)}
+  .top nav a{color:var(--bone-dim);text-decoration:none;margin-left:24px;font-size:.95rem}
+  .top nav a:hover{color:var(--bone)}
+  @media (max-width:640px){.top nav a:not(.nav-cta){display:none}}
+  .nav-cta{color:var(--mucosa)!important;font-weight:700}
+
+  /* ---------- hero ---------- */
+  .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,5vw,72px);
+        align-items:center;padding:clamp(32px,7vw,88px) 0 clamp(56px,8vw,112px)}
+  @media (max-width:880px){.hero{grid-template-columns:1fr}}
+  h1{font-family:var(--display);font-weight:900;font-variation-settings:"wdth" 58;
+     font-size:clamp(3rem,8.4vw,6.6rem);line-height:.9;letter-spacing:-.01em;margin:0 0 28px;
+     text-wrap:balance}
+  .lede{font-size:1.2rem;max-width:34ch;color:var(--bone-dim);margin:0 0 32px}
+  .actions{display:flex;flex-wrap:wrap;gap:14px}
+  .btn{display:inline-block;font:700 1rem var(--body);padding:15px 26px;border-radius:999px;
+       text-decoration:none;cursor:pointer;border:2px solid transparent}
+  .btn-primary{background:var(--mucosa);color:var(--blood)}
+  .btn-primary:hover{background:var(--fold);color:var(--blood)}
+  .btn-ghost{border-color:var(--blood-3);color:var(--bone)}
+  .btn-ghost:hover{border-color:var(--bone-dim);color:var(--fold)}
+
+  /* scope diagram */
+  .scope{position:relative;justify-self:center;width:100%;max-width:440px}
+  .scope svg{width:100%;height:auto;display:block;overflow:visible}
+  .scope-toggle{display:flex;margin:22px auto 0;width:max-content;background:var(--blood-2);
+                border-radius:999px;padding:4px;border:1px solid var(--blood-3)}
+  .scope-toggle button{font:700 .95rem var(--body);color:var(--bone-dim);background:none;border:0;
+                       padding:10px 20px;border-radius:999px;cursor:pointer}
+  .scope-toggle button[aria-pressed="true"]{background:var(--bone);color:var(--blood)}
+  .scope-caption{text-align:center;color:var(--bone-dim);font-size:.95rem;margin:14px auto 0;
+                 max-width:36ch;min-height:3.2em}
+  .ff{transition:transform .5s cubic-bezier(.3,.7,.2,1)}
+  .scream .ff-l{transform:translateX(30px)}
+  .scream .ff-r{transform:translateX(-30px)}
+  .scream .ff-l .buzz{animation:buzz-l .09s linear infinite alternate}
+  .scream .ff-r .buzz{animation:buzz-r .09s linear infinite alternate}
+  @keyframes buzz-l{to{transform:translateX(3px)}}
+  @keyframes buzz-r{to{transform:translateX(-3px)}}
+  .glow{transition:opacity .5s}
+  .scream .glow{opacity:.85}
+  @media (prefers-reduced-motion:reduce){
+    .ff{transition:none}.scream .buzz{animation:none!important}
+  }
+  .lbl{font:400 13px var(--body);fill:var(--bone-dim)}
+  .lbl-strong{font:700 14px var(--body);fill:var(--bone)}
+
+  /* ---------- sections ---------- */
+  section{padding:clamp(56px,8vw,104px) 0;border-top:1px solid var(--blood-3)}
+  h2{font-family:var(--display);font-weight:800;font-variation-settings:"wdth" 70;
+     font-size:clamp(2.1rem,4.6vw,3.4rem);line-height:1;margin:0 0 24px;text-wrap:balance}
+  h3{font-family:var(--display);font-weight:700;font-variation-settings:"wdth" 90;
+     font-size:1.3rem;line-height:1.2;margin:0 0 8px}
+  p{max-width:var(--measure)}
+  .split{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(24px,5vw,80px)}
+  @media (max-width:820px){.split{grid-template-columns:1fr}}
+  .muted{color:var(--bone-dim)}
+  .aside-h{margin-top:40px;padding-top:28px;border-top:1px solid var(--blood-3);max-width:var(--measure)}
+
+  /* path (real sequence) */
+  .path{list-style:none;margin:8px 0 0;padding:0;counter-reset:step}
+  .path li{counter-increment:step;position:relative;padding:0 0 30px 64px}
+  .path li::before{content:counter(step);position:absolute;left:0;top:-4px;width:42px;height:42px;
+     border-radius:50%;display:grid;place-items:center;font:800 1.1rem var(--display);
+     background:var(--blood-2);border:2px solid var(--mucosa);color:var(--mucosa)}
+  .path li::after{content:"";position:absolute;left:20px;top:42px;bottom:2px;width:2px;background:var(--blood-3)}
+  .path li:last-child::after{display:none}
+  .path li:last-child{padding-bottom:0}
+  .path p{margin:0;color:var(--bone-dim)}
+
+  /* who */
+  .who{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,40px);margin-top:16px}
+  @media (max-width:820px){.who{grid-template-columns:1fr}}
+  .who div{border-left:3px solid var(--mucosa);padding-left:20px}
+  .who p{margin:0;color:var(--bone-dim)}
+
+  /* lessons */
+  .lessons{margin-top:12px}
+  .lesson{display:grid;grid-template-columns:1fr 2fr 8.5rem;gap:20px 40px;align-items:baseline;
+          padding:26px 0;border-bottom:1px solid var(--blood-3)}
+  .lesson:first-child{border-top:1px solid var(--blood-3)}
+  .lesson p{margin:0;color:var(--bone-dim)}
+  .lesson .len{text-align:right;font-family:var(--display);font-variation-settings:"wdth" 80;font-weight:700;
+               color:var(--mucosa);white-space:nowrap}
+  @media (max-width:720px){.lesson{grid-template-columns:1fr}}
+  .note{margin-top:22px;color:var(--bone-dim);font-size:.98rem}
+
+  /* about */
+  .about-quote{font-family:var(--display);font-weight:600;font-variation-settings:"wdth" 75;
+               font-size:clamp(1.5rem,3vw,2.1rem);line-height:1.15;color:var(--fold);margin:0;max-width:22ch}
+
+  /* faq */
+  details{border-bottom:1px solid var(--blood-3);padding:4px 0}
+  details:first-of-type{border-top:1px solid var(--blood-3)}
+  summary{cursor:pointer;list-style:none;padding:20px 40px 20px 0;position:relative;
+          font:700 1.12rem var(--body)}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";position:absolute;right:4px;top:12px;font:400 1.9rem var(--display);
+                 color:var(--mucosa);transition:transform .2s}
+  details[open] summary::after{transform:rotate(45deg)}
+  details p{margin:0 0 22px;color:var(--bone-dim)}
+
+  /* contact */
+  .contact{background:var(--blood-2);border-top:0}
+  form{display:grid;gap:22px;max-width:640px}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  @media (max-width:600px){.row{grid-template-columns:1fr}}
+  label,.legend{display:block;font-weight:700;margin-bottom:8px}
+  .hint{font-weight:400;color:var(--bone-dim);font-size:.92rem}
+  input[type=text],input[type=email],select,textarea{
+    width:100%;font:1rem var(--body);color:var(--bone);background:var(--blood);
+    border:2px solid var(--blood-3);border-radius:10px;padding:13px 14px}
+  input::placeholder,textarea::placeholder{color:#9C8378}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--mucosa)}
+  textarea{min-height:150px;resize:vertical}
+  select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--mucosa) 50%),linear-gradient(135deg,var(--mucosa) 50%,transparent 50%);
+         background-position:calc(100% - 22px) 55%,calc(100% - 16px) 55%;background-size:6px 6px;background-repeat:no-repeat;padding-right:40px}
+  fieldset{border:0;margin:0;padding:0}
+  .chips{display:flex;flex-wrap:wrap;gap:10px}
+  .chips label{margin:0;font-weight:400}
+  .chips input{position:absolute;opacity:0;pointer-events:none}
+  .chips span{display:inline-block;padding:10px 18px;border-radius:999px;border:2px solid var(--blood-3);cursor:pointer}
+  .chips input:checked + span{background:var(--bone);color:var(--blood);border-color:var(--bone);font-weight:700}
+  .chips input:focus-visible + span{outline:3px solid var(--bruise);outline-offset:2px}
+  .err{color:#FFB4A8;font-size:.92rem;margin-top:6px;display:none}
+  .invalid .err{display:block}
+  .invalid input,.invalid textarea{border-color:#FFB4A8}
+  .hp{position:absolute;left:-9999px}
+  .status{border-radius:12px;padding:18px 20px;display:none;max-width:640px}
+  .status.show{display:block}
+  .status.ok{background:var(--bone);color:var(--blood)}
+  .status.warn{background:var(--blood-3);color:var(--bone)}
+  .status h3{margin-bottom:4px}
+  .status p{margin:0}
+  button[disabled]{opacity:.6;cursor:progress}
+
+  footer{padding:36px 0 48px;color:var(--bone-dim);font-size:.92rem}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+  /* ---------- language ---------- */
+  html[lang="nl"] [data-l="en"], html[lang="en"] [data-l="nl"]{display:none!important}
+  .lang{display:inline-flex;margin-left:24px;border:1px solid var(--blood-3);border-radius:999px;padding:3px;vertical-align:middle}
+  .lang button{font:700 .82rem var(--body);color:var(--bone-dim);background:none;border:0;padding:5px 10px;border-radius:999px;cursor:pointer}
+  .lang button[aria-pressed="true"]{background:var(--bone);color:var(--blood)}
+  @media (max-width:640px){.lang{margin-left:0}.nav-cta{display:none}}
+  .mark{white-space:nowrap}
+  .top nav{display:flex;align-items:center}
+
+  .tracks{display:grid;gap:18px;margin-top:16px;max-width:var(--measure)}
+  .track iframe{display:block;width:100%;height:152px;border:0;border-radius:12px;background:var(--blood-2)}
+  .track-link{display:inline-block;margin-top:6px;font-size:.92rem}
+  .cta-row{margin-top:28px}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <a class="mark" href="#">Andy <span>harsh vocals</span></a>
+    <nav aria-label="Main">
+      <a href="#how"><span data-l="en">How it works</span><span data-l="nl">Hoe het werkt</span></a>
+      <a href="#lessons"><span data-l="en">Lessons</span><span data-l="nl">Lessen</span></a>
+      <a href="#faq"><span data-l="en">FAQ</span><span data-l="nl">Vragen</span></a>
+      <a class="nav-cta" href="#contact"><span data-l="en">Get in touch</span><span data-l="nl">Contact</span></a>
+      <div class="lang" role="group" aria-label="Language / Taal">
+        <button type="button" data-set-lang="nl" lang="nl">NL</button>
+        <button type="button" data-set-lang="en" lang="en">EN</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+  <div class="hero">
+    <div>
+      <h1><span data-l="en">Learn to scream without shredding your voice.</span><span data-l="nl">Leer screamen zonder je stem kapot te maken.</span></h1>
+      <p class="lede"><span data-l="en">One-on-one lessons in false-chord technique, made for beginners. Online, or in person in Den Haag.</span><span data-l="nl">Eén-op-één lessen in false-chord techniek, speciaal voor beginners. Online, of live in Den Haag.</span></p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#contact"><span data-l="en">Send me a message</span><span data-l="nl">Stuur me een bericht</span></a>
+        <a class="btn btn-ghost" href="#how"><span data-l="en">How it works</span><span data-l="nl">Hoe het werkt</span></a>
+      </div>
+    </div>
+
+    <figure class="scope" id="scope" style="margin:0">
+      <svg viewBox="0 -14 440 466" role="img" aria-labelledby="scope-title scope-desc">
+        <title id="scope-title" data-i18n="svgTitle">Top-down view of the larynx</title>
+        <desc id="scope-desc" data-i18n="svgDesc">The true vocal folds form a V shape in the middle. The false vocal folds sit just above and to the sides. In false-chord mode the false folds move inward and vibrate to make the sound, while the true folds stay relaxed.</desc>
+        <defs>
+          <radialGradient id="tissue" cx="50%" cy="45%" r="60%">
+            <stop offset="0" stop-color="#C9636A"/>
+            <stop offset=".55" stop-color="#8E2E37"/>
+            <stop offset="1" stop-color="#3A1219"/>
+          </radialGradient>
+          <radialGradient id="glowg" cx="50%" cy="55%" r="50%">
+            <stop offset="0" stop-color="#E9898A" stop-opacity=".9"/>
+            <stop offset="1" stop-color="#E9898A" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="ffg" x1="0" x2="1">
+            <stop offset="0" stop-color="#B9474F"/>
+            <stop offset="1" stop-color="#E58C8C"/>
+          </linearGradient>
+          <linearGradient id="ffg-r" x1="1" x2="0">
+            <stop offset="0" stop-color="#B9474F"/>
+            <stop offset="1" stop-color="#E58C8C"/>
+          </linearGradient>
+          <clipPath id="lens"><circle cx="220" cy="220" r="196"/></clipPath>
+        </defs>
+
+        <circle cx="220" cy="220" r="204" fill="none" stroke="#4D1A22" stroke-width="6"/>
+        <g clip-path="url(#lens)">
+          <rect width="440" height="440" fill="url(#tissue)"/>
+          <ellipse class="glow" cx="220" cy="240" rx="120" ry="140" fill="url(#glowg)" opacity="0"/>
+          <path d="M120 62 Q220 20 320 62 Q300 96 220 92 Q140 96 120 62Z" fill="#E4A19B" opacity=".9"/>
+          <path d="M220 118 L176 330 Q220 352 264 330 Z" fill="#170508"/>
+          <path d="M218 116 L172 330" stroke="#FFF4EA" stroke-width="13" stroke-linecap="round"/>
+          <path d="M222 116 L268 330" stroke="#FFF4EA" stroke-width="13" stroke-linecap="round"/>
+          <g class="ff ff-l"><g class="buzz">
+            <path d="M196 112 Q150 190 142 334 Q118 300 108 220 Q116 150 196 112Z" fill="url(#ffg)"/>
+          </g></g>
+          <g class="ff ff-r"><g class="buzz">
+            <path d="M244 112 Q290 190 298 334 Q322 300 332 220 Q324 150 244 112Z" fill="url(#ffg-r)"/>
+          </g></g>
+          <ellipse cx="172" cy="354" rx="34" ry="22" fill="#D77C80"/>
+          <ellipse cx="268" cy="354" rx="34" ry="22" fill="#D77C80"/>
+        </g>
+
+        <g aria-hidden="true">
+          <line x1="248" y1="190" x2="392" y2="44" stroke="#F3E7DC" stroke-width="1.2" opacity=".75"/>
+          <circle cx="248" cy="190" r="3.5" fill="#FFF4EA"/>
+          <text class="lbl-strong" x="440" y="6" text-anchor="end" data-i18n="tfTitle">True vocal folds</text>
+          <text class="lbl" x="440" y="24" text-anchor="end" data-i18n="tfSub">your singing voice</text>
+          <line x1="126" y1="262" x2="52" y2="404" stroke="#F3E7DC" stroke-width="1.2" opacity=".75"/>
+          <circle cx="126" cy="262" r="3.5" fill="#FFF4EA"/>
+          <text class="lbl-strong" x="0" y="428" data-i18n="ffTitle">False vocal folds</text>
+          <text class="lbl" x="0" y="446" data-i18n="ffSub">the classic source of distortion</text>
+        </g>
+      </svg>
+      <div class="scope-toggle" role="group" data-i18n-aria="toggleAria" aria-label="Show the larynx while">
+        <button type="button" aria-pressed="true" data-mode="clean" data-i18n="clean">Singing clean</button>
+        <button type="button" aria-pressed="false" data-mode="scream">False chord</button>
+      </div>
+      <figcaption class="scope-caption" id="scope-caption" aria-live="polite"></figcaption>
+    </figure>
+  </div>
+  </main>
+</div>
+
+<section id="how">
+  <div class="wrap split">
+    <div>
+      <h2><span data-l="en">What false chord actually is</span><span data-l="nl">Wat false chord eigenlijk is</span></h2>
+    </div>
+    <div>
+      <div data-l="en">
+        <p>Just above your vocal folds sits a second pair of folds that normally stay out of the way. False-chord technique brings them together so they vibrate on your breath. They make the sound instead of your true vocal folds, which stay relaxed. That's where the grit and distortion come from.</p>
+        <p class="muted">It's the sound behind a lot of metalcore, deathcore, hardcore and black metal. Done well, the effort comes from your breath and the shape of your throat, not from forcing your voice. That's why it can feel easy, and why most people who try to teach themselves end up hoarse instead.</p>
+        <h3 class="aside-h">A note on the terminology</h3>
+        <p>Honestly, the vocabulary around harsh vocals is a bit of a mess. The neat split between &ldquo;fry screams&rdquo; and &ldquo;false chord&rdquo; gets repeated everywhere, but it oversimplifies things. Depending on the scream or growl, several structures in and around your larynx can get involved, like the false folds, the arytenoid cartilages and the aryepiglottic folds, often in combination.</p>
+        <p class="muted">So I won&rsquo;t pretend there&rsquo;s one correct technique. What I can teach you is what&rsquo;s classically known as false chord, as a solid and sustainable base. From there we explore other textures together and find out what works for your voice.</p>
+      </div>
+      <div data-l="nl">
+        <p>Net boven je stemplooien zit een tweede paar plooien dat normaal gesproken niets doet. Bij false chord breng je die samen, zodat ze trillen op je adem. Zij maken dan het geluid in plaats van je echte stemplooien, die ontspannen blijven. Daar komen de rauwheid en distortion vandaan.</p>
+        <p class="muted">Het is het geluid achter veel metalcore, deathcore, hardcore en black metal. Als je het goed doet, komt de kracht uit je adem en de vorm van je keel, niet uit forceren. Daarom kan het verrassend makkelijk voelen, en daarom eindigen de meeste mensen die het zichzelf proberen te leren vooral schor.</p>
+        <h3 class="aside-h">Even over de termen</h3>
+        <p>Eerlijk gezegd is de terminologie rond harsh vocals nogal een rommeltje. De nette scheiding tussen &lsquo;fry screams&rsquo; en &lsquo;false chord&rsquo; wordt overal herhaald, maar is te simpel. Afhankelijk van de scream of grunt kunnen verschillende structuren in en rond je strottenhoofd meedoen, zoals de valse stemplooien, de arytenoïden en de aryepiglottische plooien, vaak in combinatie.</p>
+        <p class="muted">Ik ga dus niet doen alsof er één juiste techniek is. Wat ik je kan leren is wat klassiek als false chord wordt gezien, als stevige en duurzame basis. Van daaruit verkennen we samen andere klanken en ontdekken we wat bij jouw stem past.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="path-h">
+  <div class="wrap split">
+    <div>
+      <h2 id="path-h"><span data-l="en">How we get you there</span><span data-l="nl">Zo kom je er</span></h2>
+      <p class="muted"><span data-l="en">Everyone moves at their own pace, but most students go through these stages in this order.</span><span data-l="nl">Iedereen gaat in z&rsquo;n eigen tempo, maar de meeste leerlingen doorlopen deze stappen in deze volgorde.</span></p>
+      <div class="cta-row"><a class="btn btn-primary" href="#contact" data-prefill="intro"><span data-l="en">Book an intro session</span><span data-l="nl">Plan een kennismakingsles</span></a></div>
+    </div>
+    <ol class="path">
+      <li>
+        <h3><span data-l="en">Breath and support</span><span data-l="nl">Adem en steun</span></h3>
+        <p><span data-l="en">The foundation for everything after. You learn to power sound from your core so your throat can stay relaxed.</span><span data-l="nl">De basis voor alles wat volgt. Je leert geluid aan te sturen vanuit je romp, zodat je keel ontspannen kan blijven.</span></p>
+      </li>
+      <li>
+        <h3><span data-l="en">Releasing tension</span><span data-l="nl">Spanning loslaten</span></h3>
+        <p><span data-l="en">We find the squeeze most beginners bring to screaming and teach your throat to open instead of clamp.</span><span data-l="nl">We zoeken de knijp die de meeste beginners meenemen bij screamen, en leren je keel te openen in plaats van dicht te knijpen.</span></p>
+      </li>
+      <li>
+        <h3><span data-l="en">Finding your false folds</span><span data-l="nl">Je valse stemplooien vinden</span></h3>
+        <p><span data-l="en">Quiet, low-volume exercises to feel the false folds engage, usually starting from a whisper or a growl-like exhale.</span><span data-l="nl">Rustige oefeningen op laag volume om te voelen hoe je valse stemplooien meedoen, vaak vanuit een fluister of een grommende uitademing.</span></p>
+      </li>
+      <li>
+        <h3><span data-l="en">Shaping the sound</span><span data-l="nl">Het geluid vormen</span></h3>
+        <p><span data-l="en">Pitch, vowel and placement: moving between lows, mids and highs, and finding a tone that sounds like you.</span><span data-l="nl">Toonhoogte, klinkers en plaatsing: schakelen tussen lows, mids en highs, en een klank vinden die als jou klinkt.</span></p>
+      </li>
+      <li>
+        <h3><span data-l="en">Stamina and real songs</span><span data-l="nl">Uithoudingsvermogen en echte nummers</span></h3>
+        <p><span data-l="en">Warm-ups, cool-downs and endurance so you can get through a full set or recording session, then applying it all to songs you love.</span><span data-l="nl">Warming-ups, cooling-downs en conditie, zodat je een hele set of opnamesessie volhoudt. Daarna pas je alles toe op nummers die je vet vindt.</span></p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section aria-labelledby="who-h">
+  <div class="wrap">
+    <h2 id="who-h"><span data-l="en">Who this is for</span><span data-l="nl">Voor wie is dit</span></h2>
+    <div class="who">
+      <div>
+        <h3>Beginners</h3>
+        <p><span data-l="en">You've never screamed and aren't sure where to start. No singing experience needed.</span><span data-l="nl">Je hebt nog nooit gescreamd en weet niet waar je moet beginnen. Zangervaring is niet nodig.</span></p>
+      </div>
+      <div>
+        <h3><span data-l="en">Self-taught and hoarse</span><span data-l="nl">Zelf geleerd en schor</span></h3>
+        <p><span data-l="en">You've tried YouTube tutorials, and it hurts or your voice is gone the next day. Let's fix that.</span><span data-l="nl">Je hebt YouTube-tutorials geprobeerd en het doet pijn, of je stem is de volgende dag weg. Daar gaan we wat aan doen.</span></p>
+      </div>
+      <div>
+        <h3><span data-l="en">Experienced screamers</span><span data-l="nl">Ervaren screamers</span></h3>
+        <p><span data-l="en">You already scream and want to learn specific techniques. We can explore tunnels, hybrids, tonal screaming or other fun flavours.</span><span data-l="nl">Je screamt al en wilt specifieke technieken leren. We kunnen tunnels, hybrids, tonal screaming of andere leuke flavours verkennen.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="why-h">
+  <div class="wrap split">
+    <div>
+      <h2 id="why-h"><span data-l="en">Why not just watch tutorials?</span><span data-l="nl">Waarom niet gewoon tutorials kijken?</span></h2>
+    </div>
+    <div>
+      <div data-l="en">
+        <p>You can, and plenty of people learn a lot that way. There are good tutorials out there. But a video can&rsquo;t hear you. Harsh vocals are hard to judge from the inside: what feels right can sound off, and what sounds right might be costing you more effort than it should.</p>
+        <p class="muted">In a one-on-one lesson I listen to what you&rsquo;re actually doing and give feedback aimed at you: which tension to let go of, what to adjust, and which exercise fits that. It usually saves a lot of trial and error, and a lot of hoarse mornings.</p>
+      </div>
+      <div data-l="nl">
+        <p>Dat kan zeker, en veel mensen leren daar een hoop van. Er zijn prima tutorials te vinden. Maar een video kan je niet horen. Harsh vocals zijn lastig van binnenuit te beoordelen: wat goed voelt kan anders klinken, en wat goed klinkt kan je meer moeite kosten dan nodig is.</p>
+        <p class="muted">In een één-op-één les luister ik naar wat je echt doet en geef ik feedback die op jou is gericht: welke spanning je kunt loslaten, wat je kunt aanpassen en welke oefening daarbij past. Dat scheelt meestal een hoop gepuzzel, en een hoop schorre ochtenden.</p>
+      </div>
+      <div class="cta-row"><a class="btn btn-primary" href="#contact"><span data-l="en">Send me a message</span><span data-l="nl">Stuur me een bericht</span></a></div>
+    </div>
+  </div>
+</section>
+
+<section id="lessons" aria-labelledby="lessons-h">
+  <div class="wrap">
+    <h2 id="lessons-h"><span data-l="en">Lessons</span><span data-l="nl">Lessen</span></h2>
+    <div class="lessons">
+      <div class="lesson">
+        <h3><span data-l="en">Intro session</span><span data-l="nl">Kennismakingsles</span></h3>
+        <p><span data-l="en">We hear where you're at, try your first exercises, and see if the way I teach suits you.</span><span data-l="nl">We horen waar je staat, doen je eerste oefeningen en kijken of mijn manier van lesgeven bij je past.</span></p>
+        <span class="len">30 min</span>
+      </div>
+      <div class="lesson">
+        <h3><span data-l="en">Single lesson</span><span data-l="nl">Losse les</span></h3>
+        <p><span data-l="en">A full one-on-one lesson with exercises to practise at home before the next one.</span><span data-l="nl">Een volledige één-op-één les, met oefeningen om thuis te doen tot de volgende keer.</span></p>
+        <span class="len">60 min</span>
+      </div>
+      <div class="lesson">
+        <h3><span data-l="en">Lesson pack</span><span data-l="nl">Lessenpakket</span></h3>
+        <p><span data-l="en">A series of lessons for steady progress from first sounds to a full song.</span><span data-l="nl">Een reeks lessen voor stevige vooruitgang, van de eerste klanken tot een volledig nummer.</span></p>
+        <span class="len"><span data-l="en">4 or 8 lessons</span><span data-l="nl">4 of 8 lessen</span></span>
+      </div>
+    </div>
+    <p class="note"><span data-l="en">Lessons run online over video call, or in person in Den Haag. Ask about rates for regular lessons in your message.</span><span data-l="nl">Lessen zijn online via videobellen, of live in Den Haag. Vraag in je bericht naar de tarieven voor reguliere lessen.</span></p>
+    <div class="cta-row"><a class="btn btn-primary" href="#contact" data-prefill="intro"><span data-l="en">Book an intro session</span><span data-l="nl">Plan een kennismakingsles</span></a></div>
+  </div>
+</section>
+
+<section aria-labelledby="about-h">
+  <div class="wrap split">
+    <div>
+      <h2 id="about-h"><span data-l="en">About me</span><span data-l="nl">Over mij</span></h2>
+      <p class="about-quote"><span data-l="en">A good scream should feel like breathing out, not like shouting.</span><span data-l="nl">Een goede scream voelt als uitademen, niet als schreeuwen.</span></p>
+    </div>
+    <div>
+      <div data-l="en">
+        <p>I'm Andy, a harsh vocalist based in Den Haag. I've been growling and screaming since I was 16. For a long time I believed I had to be &lsquo;good enough&rsquo; before I could join a band, so I spent about ten years roaring in my bedroom first. That belief turned out to be wrong.</p>
+        <p>Eventually I joined Profane Sanctum in Berlin, and these days I&rsquo;m the vocalist of DISCARDED. Over the last few years my range of techniques has kept growing, with a lot of experience in false-chord-style techniques in particular.</p>
+        <p class="muted">Those bedroom years are part of why I teach: you don&rsquo;t need to be perfect before you start making noise with other people. By day I work as a psychologist, which shapes how I teach: lessons are patient, judgment-free and built around how you learn. Screaming in front of someone for the first time feels awkward for everyone, and that&rsquo;s fine.</p>
+      </div>
+      <div data-l="nl">
+        <p>Ik ben Andy, harsh vocalist uit Den Haag. Sinds mijn zestiende grunt en scream ik. Lange tijd dacht ik dat ik eerst &lsquo;goed genoeg&rsquo; moest zijn voordat ik bij een band kon, dus heb ik eerst zo&rsquo;n tien jaar op mijn kamer lopen brullen. Die overtuiging bleek niet te kloppen.</p>
+        <p>Daarna zong ik eerst bij Profane Sanctum uit Berlijn, en nu ben ik zanger van DISCARDED. De laatste jaren ben ik steeds breder geworden in technieken, met vooral veel ervaring in false-chord-achtige technieken.</p>
+        <p class="muted">Die jaren op mijn kamer zijn ook een reden dat ik lesgeef: je hoeft niet perfect te zijn voordat je samen met anderen herrie gaat maken. Overdag werk ik als psycholoog, en dat merk je aan hoe ik lesgeef: geduldig, zonder oordeel en afgestemd op hoe jij leert. De eerste keer screamen terwijl iemand meeluistert voelt voor iedereen ongemakkelijk, en dat is prima.</p>
+      </div>
+      <h3 class="aside-h"><span data-l="en">Hear it for yourself</span><span data-l="nl">Hoor het zelf</span></h3>
+      <p class="muted"><span data-l="en">Two tracks with <a href="https://discardedband.com">DISCARDED</a>:</span><span data-l="nl">Twee nummers met <a href="https://discardedband.com">DISCARDED</a>:</span></p>
+      <div class="tracks">
+        <div class="track">
+          <iframe title="DISCARDED – Flourish || Forsaken (Spotify)" src="https://open.spotify.com/embed/track/0SjDcuf7ojGCVxZdTRZODD?utm_source=generator&amp;theme=0" height="152" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+          <a class="track-link" href="https://open.spotify.com/track/0SjDcuf7ojGCVxZdTRZODD"><span data-l="en">Flourish || Forsaken on Spotify</span><span data-l="nl">Flourish || Forsaken op Spotify</span></a>
+        </div>
+        <div class="track">
+          <iframe title="DISCARDED – Hollow (Spotify)" src="https://open.spotify.com/embed/track/1zMEKVKlKlOpq9j6SRnWLG?utm_source=generator&amp;theme=0" height="152" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+          <a class="track-link" href="https://open.spotify.com/track/1zMEKVKlKlOpq9j6SRnWLG"><span data-l="en">Hollow on Spotify</span><span data-l="nl">Hollow op Spotify</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" aria-labelledby="faq-h">
+  <div class="wrap split">
+    <div>
+      <h2 id="faq-h"><span data-l="en">Questions</span><span data-l="nl">Vragen</span></h2>
+      <p class="muted"><span data-l="en">Question not listed? Just ask.</span><span data-l="nl">Staat je vraag er niet bij? Vraag het gewoon.</span></p>
+      <div class="cta-row"><a class="btn btn-primary" href="#contact"><span data-l="en">Send me a message</span><span data-l="nl">Stuur me een bericht</span></a></div>
+    </div>
+    <div>
+      <div data-l="en">
+        <details><summary>Will screaming damage my voice?</summary>
+          <p>With good technique, false chord shouldn't hurt, and that's the core of what I teach. If something feels scratchy or painful, we stop and adjust. If you have an existing voice problem, check with a doctor or speech therapist first.</p></details>
+        <details><summary>Do I need to be able to sing?</summary>
+          <p>No. Plenty of great harsh vocalists never sing clean. We start from breathing and simple exercises.</p></details>
+        <details><summary>How long until I can actually scream?</summary>
+          <p>Most people make their first real false-chord sounds within a few lessons. Getting it consistent, powerful and comfortable for a full song takes regular practice over a few months.</p></details>
+        <details><summary>Do online lessons work for this?</summary>
+          <p>Yes. A decent microphone or headset helps, but a laptop or phone is enough to start. We'll keep the volume low at first anyway.</p></details>
+        <details><summary>What if I'm worried about the neighbours?</summary>
+          <p>Good false chord is quieter than people expect. Many of the exercises are done at low volume, and I'll show you how to practise without bothering anyone.</p></details>
+      </div>
+      <div data-l="nl">
+        <details><summary>Beschadig ik mijn stem met screamen?</summary>
+          <p>Met goede techniek hoort false chord geen pijn te doen, en dat is de kern van wat ik leer. Voelt iets schraperig of pijnlijk, dan stoppen we en passen we het aan. Heb je al een stemprobleem, overleg dan eerst met een arts of logopedist.</p></details>
+        <details><summary>Moet ik kunnen zingen?</summary>
+          <p>Nee. Genoeg goede harsh vocalists zingen nooit clean. We beginnen bij ademhaling en eenvoudige oefeningen.</p></details>
+        <details><summary>Hoe lang duurt het voordat ik echt kan screamen?</summary>
+          <p>De meeste mensen maken binnen een paar lessen hun eerste echte false-chord geluiden. Het consistent, krachtig en comfortabel krijgen voor een heel nummer vraagt een paar maanden regelmatig oefenen.</p></details>
+        <details><summary>Werken online lessen hiervoor?</summary>
+          <p>Ja. Een goede microfoon of headset helpt, maar een laptop of telefoon is genoeg om te beginnen. We houden het volume in het begin sowieso laag.</p></details>
+        <details><summary>En de buren dan?</summary>
+          <p>Goede false chord is zachter dan mensen denken. Veel oefeningen doe je op laag volume, en ik laat je zien hoe je kunt oefenen zonder iemand te storen.</p></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact" aria-labelledby="contact-h">
+  <div class="wrap split">
+    <div>
+      <h2 id="contact-h"><span data-l="en">Send me a message</span><span data-l="nl">Stuur me een bericht</span></h2>
+      <p class="muted"><span data-l="en">Tell me a bit about where you're at and what you want to sound like. I'll get back to you within a few days.</span><span data-l="nl">Vertel me wat over waar je nu staat en hoe je wilt klinken. Ik reageer binnen een paar dagen.</span></p>
+    </div>
+    <div>
+      <form id="contact-form" novalidate>
+        <div class="row">
+          <div class="field">
+            <label for="name"><span data-l="en">Name</span><span data-l="nl">Naam</span></label>
+            <input type="text" id="name" name="name" autocomplete="name" required>
+            <div class="err"><span data-l="en">Enter your name.</span><span data-l="nl">Vul je naam in.</span></div>
+          </div>
+          <div class="field">
+            <label for="email"><span data-l="en">Email</span><span data-l="nl">E-mail</span></label>
+            <input type="email" id="email" name="email" autocomplete="email" required>
+            <div class="err"><span data-l="en">Enter an email address so I can reply.</span><span data-l="nl">Vul een e-mailadres in zodat ik kan reageren.</span></div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="experience"><span data-l="en">Your experience with screaming</span><span data-l="nl">Je ervaring met screamen</span></label>
+          <select id="experience" name="experience">
+            <option value="Never tried" data-i18n="exp1">I've never tried it</option>
+            <option value="Tried on my own" data-i18n="exp2">I've tried on my own</option>
+            <option value="Can do it, but it hurts or tires me out" data-i18n="exp3">I can do it, but it hurts or tires me out</option>
+            <option value="Comfortable, wants more range or power" data-i18n="exp4">I'm comfortable and want more range or power</option>
+          </select>
+        </div>
+
+        <fieldset class="field">
+          <legend class="legend"><span data-l="en">Where would you like lessons?</span><span data-l="nl">Waar wil je les?</span></legend>
+          <div class="chips">
+            <label><input type="radio" name="format" value="Online" checked><span>Online</span></label>
+            <label><input type="radio" name="format" value="In person, Den Haag"><span><span data-l="en">In person in Den Haag</span><span data-l="nl">Live in Den Haag</span></span></label>
+            <label><input type="radio" name="format" value="Not sure yet"><span><span data-l="en">Not sure yet</span><span data-l="nl">Weet ik nog niet</span></span></label>
+          </div>
+        </fieldset>
+
+        <div class="field">
+          <label for="message"><span data-l="en">Message</span><span data-l="nl">Bericht</span> <span class="hint"><span data-l="en">Bands you'd love to sound like are useful.</span><span data-l="nl">Bands waar je graag op zou willen lijken zijn handig om te weten.</span></span></label>
+          <textarea id="message" name="message" required></textarea>
+          <div class="err"><span data-l="en">Write a short message.</span><span data-l="nl">Schrijf een kort bericht.</span></div>
+        </div>
+
+        <input type="hidden" name="language" id="lang-field" value="en">
+        <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <input type="hidden" name="_subject" value="Nieuwe aanvraag harsh vocal lessen">
+        <input type="hidden" name="_template" value="table">
+
+        <div><button class="btn btn-primary" type="submit" id="send" data-i18n="send">Send message</button></div>
+      </form>
+      <div class="status" id="status" role="status" tabindex="-1"></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span><span data-l="en">Andy, harsh vocal coaching in Den Haag and online</span><span data-l="nl">Andy, harsh vocal lessen in Den Haag en online</span></span>
+    <a href="#contact"><span data-l="en">Get in touch</span><span data-l="nl">Neem contact op</span></a>
+  </div>
+</footer>
+
+<script>
+/* ===== SETUP =====
+   Messages are sent via FormSubmit (formsubmit.co) to the address below.
+   The very first submission triggers a confirmation email to that address: click the
+   link in it once, and from then on every message is delivered.
+   After confirming, FormSubmit gives you a random code: you can replace the email address
+   in this URL with that code so the address isn't visible in the page source. */
+const FORM_ENDPOINT = "https://formsubmit.co/ajax/andy_meijer@hotmail.com";
+
+/* ---- language ---- */
+const I18N = {
+  en:{
+    title:"False-chord harsh vocal lessons with Andy",
+    svgTitle:"Top-down view of the larynx",
+    svgDesc:"The true vocal folds form a V shape in the middle. The false vocal folds sit just above and to the sides. In false-chord mode the false folds move inward and vibrate to make the sound, while the true folds stay relaxed.",
+    tfTitle:"True vocal folds", tfSub:"your singing voice",
+    ffTitle:"False vocal folds", ffSub:"the classic source of distortion",
+    toggleAria:"Show the larynx while", clean:"Singing clean",
+    capClean:"Clean singing: the false folds stay open and out of the way.",
+    capScream:"False chord: the false folds move in and vibrate on your breath. Your true vocal folds stay relaxed and don’t make the sound.",
+    exp1:"I've never tried it", exp2:"I've tried on my own",
+    exp3:"I can do it, but it hurts or tires me out", exp4:"I'm comfortable and want more range or power",
+    introMsg:"Hi Andy, I'd like to book an intro session.",
+    send:"Send message", sending:"Sending…",
+    offTitle:"The form isn’t connected yet", offBody:"Messages can’t be delivered until a form endpoint is added to this page.",
+    okTitle:"Message sent", okBody:"Thanks! I’ll reply to {email} within a few days.",
+    failTitle:"Your message didn’t send", failBody:"Check your connection and try again. Your text is still in the form."
+  },
+  nl:{
+    title:"False-chord harsh vocal lessen bij Andy",
+    svgTitle:"Bovenaanzicht van het strottenhoofd",
+    svgDesc:"De echte stemplooien vormen een V in het midden. De valse stemplooien zitten er net boven en aan de zijkanten. Bij false chord bewegen de valse plooien naar binnen en trillen ze om het geluid te maken, terwijl de echte stemplooien ontspannen blijven.",
+    tfTitle:"Echte stemplooien", tfSub:"je zangstem",
+    ffTitle:"Valse stemplooien", ffSub:"de klassieke bron van distortion",
+    toggleAria:"Toon het strottenhoofd bij", clean:"Zuiver zingen",
+    capClean:"Zuiver zingen: de valse stemplooien blijven open en uit de weg.",
+    capScream:"False chord: de valse stemplooien bewegen naar elkaar toe en trillen op je adem. Je echte stemplooien blijven ontspannen en maken het geluid niet.",
+    exp1:"Ik heb het nog nooit geprobeerd", exp2:"Ik heb het zelf geprobeerd",
+    exp3:"Ik kan het, maar het doet pijn of ik word snel moe", exp4:"Ik kan het goed en wil meer bereik of kracht",
+    introMsg:"Hoi Andy, ik wil graag een kennismakingsles plannen.",
+    send:"Verstuur bericht", sending:"Versturen…",
+    offTitle:"Het formulier is nog niet gekoppeld", offBody:"Berichten kunnen pas verstuurd worden als er een formulieradres aan deze pagina is toegevoegd.",
+    okTitle:"Bericht verstuurd", okBody:"Bedankt! Ik reageer binnen een paar dagen op {email}.",
+    failTitle:"Je bericht is niet verstuurd", failBody:"Controleer je verbinding en probeer het opnieuw. Je tekst staat nog in het formulier."
+  }
+};
+let lang = document.documentElement.lang === 'nl' ? 'nl' : 'en';
+let scopeMode = 'clean';
+const t = k => I18N[lang][k];
+
+function applyLang(l, save){
+  lang = l;
+  document.documentElement.lang = l;
+  document.title = t('title');
+  document.querySelectorAll('[data-i18n]').forEach(el=>{ el.textContent = t(el.dataset.i18n); });
+  document.querySelectorAll('[data-i18n-aria]').forEach(el=>{ el.setAttribute('aria-label', t(el.dataset.i18nAria)); });
+  document.querySelectorAll('[data-set-lang]').forEach(b=>b.setAttribute('aria-pressed', b.dataset.setLang===l ? 'true':'false'));
+  document.getElementById('scope-caption').textContent = t(scopeMode==='scream' ? 'capScream' : 'capClean');
+  document.getElementById('lang-field').value = l;
+  if(save){ try{ localStorage.setItem('hv-lang', l); }catch(e){} }
+}
+document.querySelectorAll('[data-set-lang]').forEach(b=>b.addEventListener('click',()=>applyLang(b.dataset.setLang,true)));
+applyLang(lang,false);
+
+/* ---- scope toggle ---- */
+(function(){
+  const scope = document.getElementById('scope');
+  const cap = document.getElementById('scope-caption');
+  scope.querySelectorAll('.scope-toggle button').forEach(b=>{
+    b.addEventListener('click',()=>{
+      scopeMode = b.dataset.mode;
+      scope.classList.toggle('scream', scopeMode==='scream');
+      scope.querySelectorAll('.scope-toggle button').forEach(x=>x.setAttribute('aria-pressed', x===b ? 'true':'false'));
+      cap.textContent = t(scopeMode==='scream' ? 'capScream' : 'capClean');
+    });
+  });
+})();
+
+/* ---- CTA prefill ---- */
+document.querySelectorAll('[data-prefill="intro"]').forEach(a=>a.addEventListener('click',()=>{
+  const m = document.getElementById('message');
+  if(!m.value.trim()) m.value = t('introMsg');
+  setTimeout(()=>document.getElementById('name').focus({preventScroll:true}), 400);
+}));
+
+/* ---- contact form ---- */
+(function(){
+  const form = document.getElementById('contact-form');
+  const status = document.getElementById('status');
+  const send = document.getElementById('send');
+
+  function show(kind, title, body){
+    status.className = 'status show ' + kind;
+    status.innerHTML = '';
+    const h = document.createElement('h3'); h.textContent = title;
+    const p = document.createElement('p'); p.textContent = body;
+    status.append(h,p);
+    status.focus();
+  }
+  function validate(){
+    let ok = true, first = null;
+    form.querySelectorAll('[required]').forEach(el=>{
+      const field = el.closest('.field');
+      const v = el.value.trim();
+      const valid = v !== '' && (el.type !== 'email' || /^\S+@\S+\.\S+$/.test(v));
+      field.classList.toggle('invalid', !valid);
+      if(!valid){ ok = false; first = first || el; }
+    });
+    if(first) first.focus();
+    return ok;
+  }
+  form.addEventListener('input', e=>{
+    const f = e.target.closest('.field');
+    if(f && f.classList.contains('invalid') && e.target.value.trim()) f.classList.remove('invalid');
+  });
+  form.addEventListener('submit', async e=>{
+    e.preventDefault();
+    if(!validate()) return;
+    if(!FORM_ENDPOINT){ show('warn', t('offTitle'), t('offBody')); return; }
+    send.disabled = true; send.textContent = t('sending');
+    try{
+      const res = await fetch(FORM_ENDPOINT,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});
+      const data = await res.json().catch(()=>({}));
+      if(!res.ok || String(data.success) !== 'true') throw new Error(data.message || res.status);
+      const email = form.email.value.trim();
+      form.reset(); form.hidden = true;
+      show('ok', t('okTitle'), t('okBody').replace('{email}', email));
+    }catch(err){
+      show('warn', t('failTitle'), t('failBody'));
+    }finally{
+      send.disabled = false; send.textContent = t('send');
+    }
+  });
+})();
+</script>
+</body>
+</html>
