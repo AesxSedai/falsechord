@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://falsechord.nl/sitemap.xml
